@@ -1,0 +1,79 @@
+// Copyright (C) 2018  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel FPGA IP License Agreement, or other applicable license
+// agreement, including, without limitation, that your use is for
+// the sole purpose of programming logic devices manufactured by
+// Intel and sold by Intel or its authorized distributors.  Please
+// refer to the applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to  
+// suit user's needs .Comments are provided in each section to help the user    
+// fill out necessary details.                                                  
+// *****************************************************************************
+// Generated on "12/24/2019 23:38:34"
+                                                                                
+// Verilog Test Bench template for design : counter
+// 
+// Simulation tool : ModelSim-Altera (Verilog)
+// 
+
+`timescale 1 ns/ 1 ns
+module counter_vlg_tst();
+// constants                                           
+// general purpose registers
+// test vector input registers
+reg CLK;
+reg [3:0] DATA;
+reg EN;
+reg LOAD_N;
+reg RESET_N;
+// wires                                               
+wire [3:0]  CNT;
+wire COUT;
+
+// assign statements (if any)                          
+counter i1 (
+// port map - connection between master ports and signals/registers   
+	.CLK(CLK),
+	.CNT(CNT),
+	.COUT(COUT),
+	.DATA(DATA),
+	.EN(EN),
+	.LOAD_N(LOAD_N),
+	.RESET_N(RESET_N)
+);
+initial                                                
+begin                                                  
+// code that executes only once                        
+// insert code here --> begin                          
+	CLK=1'b0;    
+	RESET_N=1'b0;
+	EN=1'b0;
+	LOAD_N=1'b0;
+	DATA=4'd3;
+	#2 RESET_N=1'b1;
+	#5 EN=1'b1;
+	#2 LOAD_N=1'b0;
+	#5 LOAD_N=1'b1;
+	#2000 $stop;                                                  
+// --> end                                             
+$display("Running testbench");                       
+end                                                    
+always                                                 
+// optional sensitivity list                           
+// @(event1 or event2 or .... eventn)                  
+begin                                                  
+// code executes for every event on sensitivity list   
+// insert code here --> begin                          
+   #10 CLK<=~CLK;                                                                                                   
+// --> end                                             
+end                                                    
+endmodule
+
