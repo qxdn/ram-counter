@@ -17,48 +17,50 @@
 // suit user's needs .Comments are provided in each section to help the user    
 // fill out necessary details.                                                  
 // *****************************************************************************
-// Generated on "12/24/2019 23:38:34"
+// Generated on "12/28/2019 11:52:50"
                                                                                 
-// Verilog Test Bench template for design : counter
+// Verilog Test Bench template for design : ram_2port
 // 
 // Simulation tool : ModelSim-Altera (Verilog)
 // 
 
-`timescale 10 ns/ 10 ns
-module counter_vlg_tst();
+`timescale 100 ns/ 100 ns
+module ram_2port_vlg_tst();
 // constants                                           
 // general purpose registers
 // test vector input registers
-reg CLK;
-reg [7:0] DATA;
-reg EN;
-reg LOAD_N;
+reg clock;
+reg [7:0] data;
+reg [3:0] rdaddress;
+reg [3:0] wraddress;
+reg wren;
+reg rden;
 // wires                                               
-wire [7:0]  CNT;
+wire [7:0]  q;
 
 // assign statements (if any)                          
-counter i1 (
+ram_2port i1 (
 // port map - connection between master ports and signals/registers   
-	.CLK(CLK),
-	.CNT(CNT),
-	.DATA(DATA),
-	.EN(EN),
-	.LOAD_N(LOAD_N)
+	.clock(clock),
+	.data(data),
+	.q(q),
+	.rdaddress(rdaddress),
+	.wraddress(wraddress),
+	.wren(wren),
+	.rden(rden)
 );
 initial                                                
 begin                                                  
 // code that executes only once                        
-// insert code here --> begin                          
-	CLK=1'b0;    
-	EN=1'b0;
-	LOAD_N=1'b0;
-	DATA=4'd3;
-	#5 EN=1'b1;
-	#2 LOAD_N=1'b0;
-	#5 LOAD_N=1'b1;  
-	#2 DATA=8'd200;
-	#2 LOAD_N=1'b0;
-	#5 LOAD_N=1'b1;                                           
+// insert code here --> begin 
+#0 clock=1'b0;                         
+#0 rdaddress=4'd2;
+#0 wraddress=4'd2;
+#0 data=8'd30;
+#0 rden=1'b1;
+#0 wren=1'b0;	
+#20 wren=0;
+#10 data=8'd200;																		
 // --> end                                             
 $display("Running testbench");                       
 end                                                    
@@ -68,7 +70,7 @@ always
 begin                                                  
 // code executes for every event on sensitivity list   
 // insert code here --> begin                          
-   #1 CLK<=~CLK;                                                                                                   
+#5 clock=~clock;                                                                                                    
 // --> end                                             
 end                                                    
 endmodule
