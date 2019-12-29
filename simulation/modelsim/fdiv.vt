@@ -17,53 +17,40 @@
 // suit user's needs .Comments are provided in each section to help the user    
 // fill out necessary details.                                                  
 // *****************************************************************************
-// Generated on "12/28/2019 11:52:50"
+// Generated on "12/29/2019 19:25:40"
                                                                                 
-// Verilog Test Bench template for design : ram_2port
+// Verilog Test Bench template for design : fdiv
 // 
 // Simulation tool : ModelSim-Altera (Verilog)
 // 
 
-`timescale 100 ns/ 100 ns
-module ram_2port_vlg_tst();
+`timescale 10 ns/ 10 ns
+module fdiv_vlg_tst();
 // constants                                           
 // general purpose registers
+
 // test vector input registers
-reg clock;
-reg [7:0] data;
-reg [3:0] rdaddress;
-reg [3:0] wraddress;
-reg wren;
-reg rden;
+reg Reset_N;
+reg clk50M;
 // wires                                               
-wire [7:0]  q;
+wire clk1Hz;
+wire clk1M;
 
 // assign statements (if any)                          
-ram_2port i1 (
+fdiv i1 (
 // port map - connection between master ports and signals/registers   
-	.clock(clock),
-	.data(data),
-	.q(q),
-	.rdaddress(rdaddress),
-	.wraddress(wraddress),
-	.wren(wren),
-	.rden(rden)
+	.Reset_N(Reset_N),
+	.clk1Hz(clk1Hz),
+	.clk1M(clk1M),
+	.clk50M(clk50M)
 );
 initial                                                
 begin                                                  
 // code that executes only once                        
-// insert code here --> begin 
-#0 clock=1'b0;                         
-#0 rdaddress=4'd2;
-#0 wraddress=4'd2;
-#0 data=8'd30;
-#0 rden=1'b1;
-#0 wren=1'b0;	
-#10 data=8'd200;
-#2 wren=1'b1;
-#10 wraddress=4'd7;
-#0 data=8'd20;
-#10 rdaddress=4'd7;																		
+// insert code here --> begin                          
+	#0 Reset_N=1'b0;
+	#0 clk50M=1'b0;	
+	#2 Reset_N=1'b1;
 // --> end                                             
 $display("Running testbench");                       
 end                                                    
@@ -73,7 +60,7 @@ always
 begin                                                  
 // code executes for every event on sensitivity list   
 // insert code here --> begin                          
-#5 clock=~clock;                                                                                                    
+   #1 clk50M=~clk50M;                                                                                
 // --> end                                             
 end                                                    
 endmodule

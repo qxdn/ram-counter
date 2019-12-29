@@ -59,17 +59,29 @@ set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH ram_2port -sect
 set_global_assignment -name EDA_TEST_BENCH_NAME counter -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id counter
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME counter_vlg_tst -section_id counter
+set_global_assignment -name EDA_TEST_BENCH_NAME ram_2port -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id ram_2port
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME ram_2port_vlg_tst -section_id ram_2port
+set_global_assignment -name EDA_TEST_BENCH_NAME fdiv -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id fdiv
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME fdiv_vlg_tst -section_id fdiv
+set_global_assignment -name VERILOG_TEST_BENCH_FILE simulation/modelsim/seg.vt
+set_global_assignment -name VERILOG_FILE seg.v
+set_global_assignment -name VERILOG_TEST_BENCH_FILE simulation/modelsim/fdiv.vt
 set_global_assignment -name VERILOG_TEST_BENCH_FILE simulation/modelsim/ram_2port.vt
 set_global_assignment -name VERILOG_TEST_BENCH_FILE simulation/modelsim/counter.vt
 set_global_assignment -name VERILOG_FILE counter.v
 set_global_assignment -name QIP_FILE ipcore/ram_2port.qip
-set_global_assignment -name EDA_TEST_BENCH_NAME ram_2port -section_id eda_simulation
-set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id ram_2port
-set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME ram_2port_vlg_tst -section_id ram_2port
+set_global_assignment -name HEX_FILE ipcore/RAMCOUNTER.hex
+set_global_assignment -name VERILOG_FILE fdiv.v
+set_global_assignment -name EDA_TEST_BENCH_NAME seg -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id seg
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME seg_vlg_tst -section_id seg
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name EDA_TEST_BENCH_FILE simulation/modelsim/counter.vt -section_id counter
 set_global_assignment -name EDA_TEST_BENCH_FILE simulation/modelsim/ram_2port.vt -section_id ram_2port
-set_global_assignment -name HEX_FILE ipcore/RAMCOUNTER.hex
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name EDA_TEST_BENCH_FILE simulation/modelsim/fdiv.vt -section_id fdiv
+set_global_assignment -name EDA_TEST_BENCH_FILE simulation/modelsim/seg.vt -section_id seg
