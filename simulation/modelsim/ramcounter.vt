@@ -1,0 +1,83 @@
+// Copyright (C) 2018  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel FPGA IP License Agreement, or other applicable license
+// agreement, including, without limitation, that your use is for
+// the sole purpose of programming logic devices manufactured by
+// Intel and sold by Intel or its authorized distributors.  Please
+// refer to the applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to  
+// suit user's needs .Comments are provided in each section to help the user    
+// fill out necessary details.                                                  
+// *****************************************************************************
+// Generated on "12/29/2019 20:38:09"
+                                                                                
+// Verilog Test Bench template for design : ramcounter
+// 
+// Simulation tool : ModelSim-Altera (Verilog)
+// 
+
+`timescale 10 ns/ 10 ns
+module ramcounter_vlg_tst();
+// constants                                           
+// general purpose registers
+// test vector input registers
+reg EN;
+reg LOAD_N;
+reg Reset_N;
+reg [3:0] address;
+reg clk;
+reg rden;
+reg wren;
+// wires                                               
+wire [7:0]  CNT;
+
+// assign statements (if any)                          
+ramcounter i1 (
+// port map - connection between master ports and signals/registers   
+	.CNT(CNT),
+	.EN(EN),
+	.LOAD_N(LOAD_N),
+	.Reset_N(Reset_N),
+	.address(address),
+	.clk(clk),
+	.rden(rden),
+	.wren(wren)
+);
+initial                                                
+begin                                                  
+// code that executes only once                        
+// insert code here --> begin                          
+    #0 Reset_N=1'd0;
+	 #0 clk=1'b0;
+	 #0 address=4'd2;
+	 #0 wren=1'b0;
+	 #0 rden=1'b1;
+	 #0 LOAD_N=1'b1;
+	 #0 EN=1'b1;
+	 #2 Reset_N=1'b1;
+	 #200 LOAD_N=1'b0;
+	 #200 LOAD_N=1'b1;
+	 #200	wren=1'b1;
+	 #0 rden=1'b0;
+// --> end                                             
+$display("Running testbench");                       
+end                                                    
+always                                                 
+// optional sensitivity list                           
+// @(event1 or event2 or .... eventn)                  
+begin                                                  
+// code executes for every event on sensitivity list   
+// insert code here --> begin                          
+    #1 clk<=~clk;                                      
+// --> end                                             
+end                                                    
+endmodule
+
