@@ -1,8 +1,9 @@
 module fdiv(clk50M,Reset_N,clk1M,clk1Hz);
-input clk50M,Reset_N;
-output reg clk1M,clk1Hz;
+input clk50M,Reset_N;  //时钟与复位
+output reg clk1M,clk1Hz; 
 
 reg [4:0] CNT1M;
+//计数器最大值
 localparam MaxDiv1M=5'd24;
 
 reg [27:0] CNT1Hz;

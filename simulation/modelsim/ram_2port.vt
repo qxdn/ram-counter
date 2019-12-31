@@ -54,16 +54,15 @@ begin
 // code that executes only once                        
 // insert code here --> begin 
 #0 clock=1'b0;                         
-#0 rdaddress=4'd2;
-#0 wraddress=4'd2;
-#0 data=8'd30;
+#0 rdaddress=4'd7;
+#0 wraddress=4'd7;
+#0 data=8'd200;
 #0 rden=1'b1;
 #0 wren=1'b0;	
-#10 data=8'd200;
-#2 wren=1'b1;
-#10 wraddress=4'd7;
-#0 data=8'd20;
-#10 rdaddress=4'd7;																		
+#12 wren=1'b1;
+#10 wraddress=4'd5;
+#2 data=8'd20;
+#10 rdaddress=4'd5;																		
 // --> end                                             
 $display("Running testbench");                       
 end                                                    

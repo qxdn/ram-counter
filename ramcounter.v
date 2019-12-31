@@ -7,6 +7,7 @@ wire clk1M;
 wire clk1Hz;
 wire [7:0] LoadData;
 
+//实例化分频器
 fdiv u_fdiv(
     .clk50M     (clk),
     .Reset_N    (Reset_N),
@@ -14,6 +15,7 @@ fdiv u_fdiv(
     .clk1M      (clk1M),
     .clk1Hz     (clk1Hz)
 );
+//实例化RAM
 
 ram_2port u_ram(
     .clock      (clk1M),
@@ -25,6 +27,7 @@ ram_2port u_ram(
 
     .q          (LoadData)
 );
+//实例化计数器
 
 counter u_counter(
     .CLK        (clk1Hz),

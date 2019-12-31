@@ -12,7 +12,11 @@ always @(posedge CLK or negedge LOAD_N) begin
     if (!LOAD_N) begin
         CNT<=DATA;  
     end else if(EN) begin
+		 if(CNT==8'd255) begin
+			CNT<=8'd0;
+		 end else begin
         CNT<=CNT+1'b1;
+		 end
     end
 end
 

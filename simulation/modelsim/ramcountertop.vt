@@ -58,7 +58,7 @@ begin
 // insert code here --> begin                          
     #0 Reset_N=1'd0;
 	 #0 clk=1'b0;
-	 #0 address=4'd2;
+	 #0 address=4'd4;
 	 #0 wren=1'b0;
 	 #0 rden=1'b1;
 	 #0 LOAD_N=1'b1;
@@ -66,8 +66,7 @@ begin
 	 #2 Reset_N=1'b1;
 	 #200 LOAD_N=1'b0;
 	 #200 LOAD_N=1'b1;
-	 #200	wren=1'b1;
-	 #0 rden=1'b0;                                                
+	 #200	wren=1'b1;                                               
 // --> end                                                                   
 end                                                    
 always                                                 

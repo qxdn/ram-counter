@@ -52,7 +52,7 @@ begin
 // code that executes only once                        
 // insert code here --> begin                          
 #0 clk=1'b0;
-#0 data=16'd1234;
+#0 data=16'd0165;
 #0 point=4'b0000;
 #0 sys_reset=1'b0;
 #10 sys_reset=1'b1;                                                       

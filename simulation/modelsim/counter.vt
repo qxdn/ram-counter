@@ -49,14 +49,14 @@ initial
 begin                                                  
 // code that executes only once                        
 // insert code here --> begin                          
-	CLK=1'b0;    
-	EN=1'b0;
-	LOAD_N=1'b0;
-	DATA=4'd3;
+	#0 CLK=1'b0;    
+	#0 EN=1'b0;
+	#0 LOAD_N=1'b1;
+	#0 DATA=8'd240;
 	#5 EN=1'b1;
 	#2 LOAD_N=1'b0;
 	#5 LOAD_N=1'b1;  
-	#2 DATA=8'd200;
+	#20 DATA=8'd200;
 	#2 LOAD_N=1'b0;
 	#5 LOAD_N=1'b1;                                           
 // --> end                                             
